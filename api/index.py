@@ -63,7 +63,7 @@ def handle_message(event):
 
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=reply_msg)+rich_menu.rich_menu_id)
+                TextSendMessage(text=reply_msg + rich_menu.rich_menu_id)
         return
 
 
