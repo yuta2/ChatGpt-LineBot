@@ -53,7 +53,13 @@ def handle_message(event):
             event.reply_token,
             TextSendMessage(text="感謝您的使用，若需要我的服務，請跟我說 「啟動」 謝謝~"))
         return
-    
+
+    if event.message.type != "list_rich_menu":
+        rich_menu_list = line_bot_api.get_rich_menu_list()
+        for rich_menu in rich_menu_list:
+            print(rich_menu.rich_menu_id)
+        return
+
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
