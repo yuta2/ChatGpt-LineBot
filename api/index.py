@@ -54,7 +54,7 @@ def handle_message(event):
             TextSendMessage(text="感謝您的使用，若需要我的服務，請跟我說 「啟動」 謝謝~"))
         return
 
-    if event.message.type != "delete_rich_menu":
+    if event.message.type == "delete_rich_menu":
         reply_msg = 'rich menu 已全部刪除'
         rich_menu_list = line_bot_api.get_rich_menu_list()
         for rich_menu in rich_menu_list:
