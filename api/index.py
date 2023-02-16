@@ -55,11 +55,16 @@ def handle_message(event):
         return
 
     if event.message.type != "list_rich_menu":
+        reply_msg = ''
         rich_menu_list = line_bot_api.get_rich_menu_list()
         for rich_menu in rich_menu_list:
             # print(rich_menu.rich_menu_id)
             reply_msg = reply_msg+','+rich_menu.rich_menu_id
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=reply_msg))
         return
+
 
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
