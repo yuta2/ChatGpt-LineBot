@@ -55,15 +55,15 @@ def handle_message(event):
         return
 
     if event.message.type == "delete_rich_menu":
-        reply_msg = 'rich menu 已全部刪除'
+        reply_msg = '刪除:'
         rich_menu_list = line_bot_api.get_rich_menu_list()
         for rich_menu in rich_menu_list:
             print(rich_menu.rich_menu_id)
             line_bot_api.delete_rich_menu(rich_menu.rich_menu_id)
 
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply_msg))
+            line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=reply_msg)+rich_menu.rich_menu_id)
         return
 
 
