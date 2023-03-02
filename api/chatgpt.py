@@ -23,7 +23,7 @@ class ChatGPT:
             stop = None,                      # The stopping sequence for the generated response, if any (not used here)
             max_tokens = self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
         )
-        return response.choices[0].message.content
+        return response.choices[0].message.content.lstrip()
 
     def add_msg(self, text):
         self.prompt.add_msg(text)
