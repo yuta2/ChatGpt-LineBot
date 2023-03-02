@@ -21,7 +21,7 @@ class ChatGPT:
             messages=[{"role": "user", "content": self.prompt.generate_prompt()}],
             temperature=self.temperature,   # The "creativity" of the generated response (higher temperature = more creative)
             stop=None,                      # The stopping sequence for the generated response, if any (not used here)
-            max_tokens=self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
+            max_tokens=4096      # The maximum number of tokens (words or subwords) in the generated response
         )
 
         return response.choices[0].message.content
