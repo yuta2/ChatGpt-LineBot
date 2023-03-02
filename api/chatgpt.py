@@ -20,7 +20,7 @@ class ChatGPT:
         response = openai.Completion.create(
             model=self.model,
             # messages=self.prompt.generate_prompt(),
-            messages=[{"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}],
+            prompt=[{"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}],
             # prompt=self.prompt.generate_prompt(),
             temperature=self.temperature,
             # frequency_penalty=self.frequency_penalty,
