@@ -24,8 +24,7 @@ class ChatGPT:
             max_tokens=self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
         )
 
-        return self.prompt.generate_prompt()
-        # return response.choices[0].message.content
+        return response.choices[0].message.content
 
     def add_msg(self, text):
         self.prompt.add_msg(text)
