@@ -9,7 +9,7 @@ class ChatGPT:
     def __init__(self):
         self.prompt = Prompt()
         # self.model = "gpt-3.5-turbo"
-        self.model = os.getenv("OPENAI_MODEL", default = "text-davinci-002")
+        self.model = os.getenv("OPENAI_MODEL", default = "gpt-3.5-turbo")
         # self.model = os.getenv("OPENAI_MODEL", default = "text-davinci-003")
         # self.model = os.getenv("OPENAI_MODEL", default = "chatbot")
         self.temperature = float(os.getenv("OPENAI_TEMPERATURE", default = 0))
