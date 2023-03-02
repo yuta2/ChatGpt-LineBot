@@ -49,7 +49,8 @@ class ChatGPT:
             messages=[{"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}]
         )
 
-        return response.choices[0].message.content
+        return response
+        # return response.choices[0].message.content
         # return self.prompt.generate_prompt()
     def add_msg(self, text):
         self.prompt.add_msg(text)
