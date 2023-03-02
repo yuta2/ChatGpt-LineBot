@@ -19,14 +19,15 @@ class ChatGPT:
     def get_response(self):
         response = openai.ChatCompletion.create(
             model=self.model,
-            messages=[{"role": "user", "content": self.prompt.generate_prompt()}],
+            messages=[{"role": "user", "content":"HI"}],
             temperature=self.temperature,
             # frequency_penalty=self.frequency_penalty,
             # presence_penalty=self.presence_penalty,
             stop=None,
             max_tokens=self.max_tokens
         )
-        return response['choices'][0]['text'].strip()
+        return response
+        # return response['choices'][0]['text'].strip()
 
     def add_msg(self, text):
         self.prompt.add_msg(text)
