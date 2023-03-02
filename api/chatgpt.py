@@ -46,7 +46,8 @@ class ChatGPT:
 
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}]
+            messages=[{"role": "user", "content": self.prompt.generate_prompt()}]
+            # messages=[{"role": "user", "content": "Tell the world about the ChatGPT API in the style of a pirate."}]
         )
 
         return response.choices[0].message.content
