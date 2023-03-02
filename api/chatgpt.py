@@ -17,11 +17,11 @@ class ChatGPT:
     def get_response(self):
         # Use OpenAI's ChatCompletion API to get the chatbot's response
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",   # The name of the OpenAI chatbot model to use
-            messages=[{"role": "user", "content": self.prompt.generate_prompt()}],
-            temperature=self.temperature,   # The "creativity" of the generated response (higher temperature = more creative)
-            stop=None,                      # The stopping sequence for the generated response, if any (not used here)
-            max_tokens=self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
+            model = self.model,   # The name of the OpenAI chatbot model to use
+            messages = [{"role": "user", "content": self.prompt.generate_prompt()}],
+            temperature = self.temperature,   # The "creativity" of the generated response (higher temperature = more creative)
+            stop = None,                      # The stopping sequence for the generated response, if any (not used here)
+            max_tokens = self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
         )
         return response.choices[0].message.content
 
