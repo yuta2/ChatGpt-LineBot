@@ -13,7 +13,7 @@ class ChatGPT:
         self.top_p = float(os.getenv("OPENAI_TOP_P", default = 1))
         self.frequency_penalty = float(os.getenv("OPENAI_FREQUENCY_PENALTY", default = 0.3))
         self.presence_penalty = float(os.getenv("OPENAI_PRESENCE_PENALTY", default = 0))
-        self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 3000))
+        self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 2000))
 
     def get_response(self):
         # Use OpenAI's ChatCompletion API to get the chatbot's response
