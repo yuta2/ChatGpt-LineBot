@@ -10,9 +10,10 @@ class ChatGPT:
         self.prompt = Prompt()
         self.model = os.getenv("OPENAI_MODEL", default = "gpt-3.5-turbo")
         self.temperature = float(os.getenv("OPENAI_TEMPERATURE", default = 0))
-        self.frequency_penalty = float(os.getenv("OPENAI_FREQUENCY_PENALTY", default = 0))
+        self.top_p = float(os.getenv("OPENAI_TOP_P", default = 1))
+        self.frequency_penalty = float(os.getenv("OPENAI_FREQUENCY_PENALTY", default = 0.3))
         self.presence_penalty = float(os.getenv("OPENAI_PRESENCE_PENALTY", default = 0))
-        self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 2000))
+        self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 3000))
 
     def get_response(self):
         # Use OpenAI's ChatCompletion API to get the chatbot's response
@@ -22,7 +23,7 @@ class ChatGPT:
             temperature = self.temperature,   # The "creativity" of the generated response (higher temperature = more creative)
             frequency_penalty = self.frequency_penalty,
             presence_penalty = self.presence_penalty,
-            top_p = 1.0,
+            top_p = self.top_p,
             max_tokens = self.max_tokens      # The maximum number of tokens (words or subwords) in the generated response
         )
         return response.choices[0].message.content.strip()
