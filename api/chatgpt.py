@@ -8,6 +8,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 class ChatGPT:
     def __init__(self):
         self.prompt = Prompt()
+
         # self.model = os.getenv("OPENAI_MODEL", default = "gpt-3.5-turbo")
         self.model = os.getenv("OPENAI_MODEL", default = "gpt-4")
         self.temperature = float(os.getenv("OPENAI_TEMPERATURE", default = 0))
