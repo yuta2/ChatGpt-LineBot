@@ -26,6 +26,7 @@ class Carbon:
                                              departure_time=departure_time)
 
         distance = directions_result[0]['legs'][0]['distance']['value']
+        distance = distance / 1000  # km
         duration = directions_result[0]['legs'][0]['duration']['value']
 
         data = {
@@ -37,7 +38,7 @@ class Carbon:
             'duration_unit': 'second',
             'status': 'OK'
         }
-        return json.dumps(data) / 1000  # km
+        return json.dumps(data)
 
     #
     # def get_geocode_location(address):
