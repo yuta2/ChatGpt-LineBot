@@ -3,6 +3,7 @@ import googlemaps
 from datetime import datetime
 import json
 import math
+import requests
 
 # Google Maps API 金鑰
 gmaps_keys = os.getenv("GMAPS_API_KEY")
