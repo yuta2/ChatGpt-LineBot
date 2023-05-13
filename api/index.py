@@ -6,6 +6,7 @@ from api.chatgpt import ChatGPT
 from api.carbon import Carbon
 
 import os
+import json
 
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
 line_handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
