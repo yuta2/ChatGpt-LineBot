@@ -25,8 +25,8 @@ def home():
 def test():
     origin_input = '金豐機器工業股份有限公司'
     destination_input = '基隆內港'
-    mode = None
-    result_text = Carbon.calc_distance(origin_input,destination_input,mode)
+
+    result_text = Carbon.calc_distance(origin_input,destination_input)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
@@ -46,9 +46,7 @@ def carbon():
     parsed_data = urllib.parse.parse_qs(body)
     from_value = parsed_data['from'][0]
     to_value = parsed_data['to'][0]
-    mode = parsed_data['mode'][0] if mode else 'driving'
-    # mode = mode if mode else 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
-    result_text = Carbon.calc_distance(from_value, to_value, mode)
+    result_text = Carbon.calc_distance(from_value, to_value)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':

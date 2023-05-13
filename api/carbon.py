@@ -13,13 +13,9 @@ class Carbon:
     #     pass
 
     # 透過google maps獲取距離
-    def calc_distance(origin, destination, mode):
-        # 輸入起點和終點的地址或座標
-        # origin = origin_text
-        # destination = destination_text
-        # mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
-        # mode = mode if mode else 'driving'
+    def calc_distance(origin, destination):
         # 設置查詢參數，例如交通方式、出發時間等等
+        mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
         departure_time = datetime.now()
 
         # 呼叫 Google Maps API 並取得路徑距離
@@ -36,7 +32,6 @@ class Carbon:
             'distance_unit': 'meter',
             'duration': duration,
             'duration_unit': 'second',
-            'mode': mode,
             'status': 'OK'
         }
         return json.dumps(data)
