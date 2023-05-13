@@ -7,6 +7,7 @@ import json
 gmaps = googlemaps.Client(key = os.getenv("GMAPS_API_KEY"))
 
 class Carbon:
+    @classmethod
     def __init__(self):
         pass
 
