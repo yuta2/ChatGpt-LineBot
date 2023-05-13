@@ -41,8 +41,8 @@ def test():
 def process_data():
     # 從POST請求中獲取資料
     body = request.get_data(as_text=True)
-    data = {'body': body}
-    return jsonify(data)
+    # data = {'body': body}
+    # return jsonify(data)
     # body = request.get_data(as_text=True)
     # data = request.get_json()
     # from_value = request.form['from']
@@ -51,10 +51,15 @@ def process_data():
     # return data
     # return jsonify(data)
 
-    # 處理資料並返回響應
+    處理資料並返回響應
     # result = {'from': from_location, 'to': to_location}
     # return jsonify(result)
-    # parsed_data = urllib.parse.parse_qs(data)
+    parsed_data = urllib.parse.parse_qs(body)
+    from_value = parsed_data['from'][0]
+    to_value = parsed_data['to'][0]
+    data = {'from': from_value, 'to': to_value}
+    return jsonify(data)
+
     # json_data = json.dumps(parsed_data)
     # return json_datajson_data
 
