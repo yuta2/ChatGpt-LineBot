@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -28,14 +28,24 @@ def test():
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
-        return json_data
-    else:
-        return 'No Data'
-        # 獲取經度和緯度
         # distance = json_data['distance']
         # duration = json_data['duration']
         # print(f"距離：{distance} 公尺")
         # print(f"時間：{duration} 秒")
+        return json_data
+    else:
+        return 'no data'
+
+@app.route('/process_data', methods=['POST'])
+def process_data():
+    # 從POST請求中獲取資料
+    data = request.get_json()
+    from_location = data['from']
+    to_location = data['to']
+
+    # 處理資料並返回響應
+    result = {'from': from_location, 'to': to_location}
+    return jsonify(result)
 
 @app.route("/webhook", methods=['POST'])
 def callback():
