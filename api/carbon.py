@@ -43,6 +43,9 @@ class Carbon:
             print("獲取第二個地址經緯度失敗")
             return
         distance_sphere_km = Carbon.distance_on_unit_sphere(from_location[0], from_location[1], to_location[0], to_location[1])
+        distance_sphere_mi = Carbon.km_to_mi(distance_sphere_km)
+        distance_sphere_nm = Carbon.km_to_nm(distance_sphere_km)
+
 
         data = {
             'from': origin,
@@ -54,6 +57,8 @@ class Carbon:
             'distance_nm': distance_nm,
             'duration_sec': duration,
             'distance_sphere_km': distance_sphere_km,
+            'distance_sphere_mi': distance_sphere_mi,
+            'distance_sphere_nm': distance_sphere_nm,
             'status': 'OK'
         }
         return json.dumps(data)
