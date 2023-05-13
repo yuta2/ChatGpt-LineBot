@@ -33,7 +33,7 @@ def test():
         duration = json_data['duration']
         print(f"距離：{distance} 公尺")
         print(f"時間：{duration} 秒")
-    return
+    return None
 
 @app.route("/webhook", methods=['POST'])
 def callback():
