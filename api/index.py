@@ -4,6 +4,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 from api.chatgpt import ChatGPT
 from api.carbon import Carbon
+import urllib.parse
 
 import os
 import json
@@ -39,15 +40,19 @@ def test():
 @app.route('/process_data', methods=['POST'])
 def process_data():
     # 從POST請求中獲取資料
-    body = request.get_data(as_text=True)
+    # body = request.get_data(as_text=True)
     # data = request.get_json()
-    # from_location = data['from']
-    # to_location = data['to']
+    from_value = request.form['from']
+    to_value = request.form['to']
+    data = {'from': from_value, 'to': to_value}
+    return jsonify(data)
 
     # 處理資料並返回響應
     # result = {'from': from_location, 'to': to_location}
     # return jsonify(result)
-    return body
+    # parsed_data = urllib.parse.parse_qs(data)
+    # json_data = json.dumps(parsed_data)
+    # return json_datajson_data
 
 @app.route("/webhook", methods=['POST'])
 def callback():
