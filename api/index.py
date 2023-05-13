@@ -21,11 +21,31 @@ chatgpt = ChatGPT()
 def home():
     return 'Hello, World!'
 
-@app.route('/carbon')
+@app.route('/test')
 def test():
     origin_input = '金豐機器工業股份有限公司'
     destination_input = '基隆內港'
     result_text = Carbon.calc_distance(origin_input,destination_input)
+    json_data = json.loads(result_text)
+
+    if json_data['status'] == 'OK':
+        # distance = json_data['distance']
+        # duration = json_data['duration']
+        # print(f"距離：{distance} 公尺")
+        # print(f"時間：{duration} 秒")
+        return json_data
+    else:
+        return 'no data'
+
+@app.route('/carbon', methods=['POST'])
+def carbon():
+    # 從POST請求中獲取資料
+    body = request.get_data(as_text=True)
+    # 處理資料並返回響應
+    parsed_data = urllib.parse.parse_qs(body)
+    from_value = parsed_data['from'][0]
+    to_value = parsed_data['to'][0]
+    result_text = Carbon.calc_distance(from_value,to_value)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
