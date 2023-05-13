@@ -22,7 +22,7 @@ def home():
     return 'Hello, World!'
 
 @app.route('/carbon')
-def carbon():
+def test():
     # 從POST請求中獲取資料
     body = request.get_data(as_text=True)
     # 處理資料並返回響應
