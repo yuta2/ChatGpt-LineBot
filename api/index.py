@@ -39,13 +39,15 @@ def test():
 @app.route('/process_data', methods=['POST'])
 def process_data():
     # 從POST請求中獲取資料
-    data = request.get_json()
-    from_location = data['from']
-    to_location = data['to']
+    body = request.get_data(as_text=True)
+    # data = request.get_json()
+    # from_location = data['from']
+    # to_location = data['to']
 
     # 處理資料並返回響應
-    result = {'from': from_location, 'to': to_location}
-    return jsonify(result)
+    # result = {'from': from_location, 'to': to_location}
+    # return jsonify(result)
+    return body
 
 @app.route("/webhook", methods=['POST'])
 def callback():
