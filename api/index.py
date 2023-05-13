@@ -58,7 +58,7 @@ def process_data():
     from_value = parsed_data['from'][0]
     to_value = parsed_data['to'][0]
     data = {'from': from_value, 'to': to_value}
-    return jsonify(data)
+    return data
 
     # json_data = json.dumps(parsed_data)
     # return json_datajson_data
