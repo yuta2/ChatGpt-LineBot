@@ -31,9 +31,16 @@ class Carbon:
         distance_nm = Carbon.km_to_nm(distance_km) # 海哩
         duration = directions_result[0]['legs'][0]['duration']['value']
 
+        # 獲取地址的經緯度
+        from_location = get_geocode_location(origin)
+        to_location = get_geocode_location(destination)
+
+
         data = {
             'from': origin,
             'to': destination,
+            'from_location': from_location,
+            'to_location': to_location,
             'distance_km': distance_km,
             'distance_mi': distance_mi,
             'distance_nm': distance_nm,
