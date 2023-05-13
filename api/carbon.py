@@ -26,9 +26,9 @@ class Carbon:
                                              departure_time=departure_time)
 
         distance = directions_result[0]['legs'][0]['distance']['value']
-        distance_km =  distance / 1000   # km
-        distance_mi = km_to_mi(distance) # 英哩
-        distance_nm = km_to_nm(distance) # 海哩
+        distance_km = distance / 1000   # km
+        distance_mi = Carbon.km_to_mi(distance_km) # 英哩
+        distance_nm = Carbon.km_to_nm(distance_km) # 海哩
         duration = directions_result[0]['legs'][0]['duration']['value']
 
         data = {
