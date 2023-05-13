@@ -42,7 +42,11 @@ def process_data():
     # 從POST請求中獲取資料
     body = request.get_data(as_text=True)
     parsed_data = urllib.parse.parse_qs(body)
-    return parsed_data
+    from_value = parsed_data['from'][0]
+    to_value = parsed_data['to'][0]
+    data = {'from': from_value, 'to': to_value}
+    return data
+    # return parsed_data
 
 
     # 處理資料並返回響應
