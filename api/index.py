@@ -25,7 +25,8 @@ def home():
 def test():
     origin_input = '金豐機器工業股份有限公司'
     destination_input = '基隆內港'
-    result_text = Carbon.calc_distance(origin_input,destination_input)
+    mode = None
+    result_text = Carbon.calc_distance(origin_input,destination_input,mode)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
