@@ -9,7 +9,7 @@ class Carbon:
     def __init__(self):
         pass
 
-    def calc_distance():
+    def calc_distance(self):
         # 輸入起點和終點的地址或座標
         origin = '彰化市彰水路186號'
         destination = '基隆內港'
