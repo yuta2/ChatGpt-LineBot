@@ -53,6 +53,7 @@ class Carbon:
             'distance_mi': distance_mi,
             'distance_nm': distance_nm,
             'duration_sec': duration,
+            'distance_sphere_km': distance_sphere_km,
             'status': 'OK'
         }
         return json.dumps(data)
