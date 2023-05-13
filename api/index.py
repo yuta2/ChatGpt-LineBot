@@ -1,4 +1,4 @@
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -21,7 +21,18 @@ def home():
 
 @app.route('/carbon')
 def test():
-    return Carbon.calc_distance()
+    origin_input = '金豐機器工業股份有限公司'
+    destination_input = '基隆內港'
+    result_text = Carbon.calc_distance(origin_input,destination_input)
+    json_data = json.loads(result_text)
+
+    if json_data['status'] == 'OK':
+        # 獲取經度和緯度
+        distance = json_data['distance']
+        duration = json_data['duration']
+        print(f"距離：{distance} 公尺")
+        print(f"時間：{duration} 秒")
+    return
 
 @app.route("/webhook", methods=['POST'])
 def callback():

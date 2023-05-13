@@ -1,6 +1,7 @@
 import os
 import googlemaps
 from datetime import datetime
+import json
 
 # Google Maps API 金鑰
 gmaps = googlemaps.Client(key = os.getenv("GMAPS_API_KEY"))
@@ -29,6 +30,8 @@ class Carbon:
 
         data = {
             'distance': distance,
-            'duration': duration
+            'duration': duration,
+            'status': 'OK'
         }
-        return jsonify(data)
+        return json.dumps(data)
+
