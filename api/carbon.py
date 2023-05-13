@@ -36,6 +36,7 @@ class Carbon:
             'distance_unit': 'meter',
             'duration': duration,
             'duration_unit': 'second',
+            'mode': mode,
             'status': 'OK'
         }
         return json.dumps(data)
