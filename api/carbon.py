@@ -6,9 +6,10 @@ from datetime import datetime
 gmaps = googlemaps.Client(key = os.getenv("GMAPS_API_KEY"))
 
 class Carbon:
-    # def __init__(self):
+    def __init__(self):
+        pass
 
-    def calc_distance(self):
+    def calc_distance():
         # 輸入起點和終點的地址或座標
         origin = '彰化市彰水路186號'
         destination = '基隆內港'
