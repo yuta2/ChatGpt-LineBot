@@ -32,8 +32,8 @@ class Carbon:
         duration = directions_result[0]['legs'][0]['duration']['value']
 
         # 獲取地址的經緯度
-        from_location = get_geocode_location(origin)
-        to_location = get_geocode_location(destination)
+        from_location = Carbon.get_geocode_location(origin)
+        to_location = Carbon.get_geocode_location(destination)
         # 判斷是否獲取成功
         if from_location is None:
             print("獲取第一個地址經緯度失敗")
@@ -41,7 +41,7 @@ class Carbon:
         if to_location is None:
             print("獲取第二個地址經緯度失敗")
             return
-        distance_sphere_km = distance_on_unit_sphere(from_location[0], from_location[1], to_location[0], to_location[1])
+        distance_sphere_km = Carbon.distance_on_unit_sphere(from_location[0], from_location[1], to_location[0], to_location[1])
 
         data = {
             'from': origin,
