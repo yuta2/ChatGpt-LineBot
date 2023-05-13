@@ -37,63 +37,63 @@ class Carbon:
             'distance_km': distance_km,
             'distance_mi': distance_mi,
             'distance_nm': distance_nm,
-            'duration': duration,
-            'duration_unit': 'second',
+            'duration_sec': duration,
             'status': 'OK'
         }
         return json.dumps(data)
 
-    #
-    # def get_geocode_location(address):
-    #     """使用Google Maps API獲取地址的經緯度"""
-    #
-    #     # Google Maps API的URL
-    #     url = 'https://maps.googleapis.com/maps/api/geocode/json'
-    #
-    #     # 構建參數字典
-    #     params = {
-    #         'address': address,
-    #         'key': gmaps_keys
-    #     }
-    #
-    #     # 發送GET請求
-    #     response = requests.get(url, params=params)
-    #
-    #     # 解析JSON數據
-    #     json_data = response.json()
-    #
-    #     # 檢查請求是否成功
-    #     if json_data['status'] == 'OK':
-    #         # 獲取經度和緯度
-    #         lat = json_data['results'][0]['geometry']['location']['lat']
-    #         lng = json_data['results'][0]['geometry']['location']['lng']
-    #         return (lat, lng)
-    #     else:
-    #         return None
-    #
-    #
-    # def distance_on_unit_sphere(lat1, long1, lat2, long2):
-    #     """計算兩個地址之間的大圓航線距離"""
-    #
-    #     # 將經度和緯度轉換為弧度
-    #     degrees_to_radians = math.pi / 180.0
-    #
-    #     # 將緯度和經度換算成弧度
-    #     phi1 = (90.0 - lat1) * degrees_to_radians
-    #     phi2 = (90.0 - lat2) * degrees_to_radians
-    #     theta1 = long1 * degrees_to_radians
-    #     theta2 = long2 * degrees_to_radians
-    #
-    #     # 計算cos和sin值
-    #     cos = (math.sin(phi1) * math.sin(phi2) * math.cos(theta1 - theta2) +
-    #            math.cos(phi1) * math.cos(phi2))
-    #
-    #     # 計算兩點間的距離
-    #     arc = math.acos(cos)
-    #
-    #     # 在地球半徑上縮放弧長，得到距離
-    #     return arc * 6371  #
-    #
+
+    def get_geocode_location(address):
+        """使用Google Maps API獲取地址的經緯度"""
+
+        # Google Maps API的URL
+        url = 'https://maps.googleapis.com/maps/api/geocode/json'
+
+        # 構建參數字典
+        params = {
+            'address': address,
+            'key': gmaps_keys
+        }
+
+        # 發送GET請求
+        response = requests.get(url, params=params)
+
+        # 解析JSON數據
+        json_data = response.json()
+
+        # 檢查請求是否成功
+        if json_data['status'] == 'OK':
+            # 獲取經度和緯度
+            lat = json_data['results'][0]['geometry']['location']['lat']
+            lng = json_data['results'][0]['geometry']['location']['lng']
+            return (lat, lng)
+        else:
+            return None
+
+
+    def distance_on_unit_sphere(lat1, long1, lat2, long2):
+        """計算兩個地址之間的大圓航線距離"""
+
+        # 將經度和緯度轉換為弧度
+        degrees_to_radians = math.pi / 180.0
+
+        # 將緯度和經度換算成弧度
+        phi1 = (90.0 - lat1) * degrees_to_radians
+        phi2 = (90.0 - lat2) * degrees_to_radians
+        theta1 = long1 * degrees_to_radians
+        theta2 = long2 * degrees_to_radians
+
+        # 計算cos和sin值
+        cos = (math.sin(phi1) * math.sin(phi2) * math.cos(theta1 - theta2) +
+               math.cos(phi1) * math.cos(phi2))
+
+        # 計算兩點間的距離
+        arc = math.acos(cos)
+
+        # 在地球半徑上縮放弧長，得到距離
+        return arc * 6371  #
+
+
     def km_to_mi(km):
         return km / 1.609344
 
