@@ -28,12 +28,14 @@ def test():
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
+        return json_data
+    else:
+        return 'No Data'
         # 獲取經度和緯度
-        distance = json_data['distance']
-        duration = json_data['duration']
-        print(f"距離：{distance} 公尺")
-        print(f"時間：{duration} 秒")
-    return None
+        # distance = json_data['distance']
+        # duration = json_data['duration']
+        # print(f"距離：{distance} 公尺")
+        # print(f"時間：{duration} 秒")
 
 @app.route("/webhook", methods=['POST'])
 def callback():
