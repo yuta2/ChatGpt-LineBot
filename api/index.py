@@ -23,15 +23,9 @@ def home():
 
 @app.route('/carbon')
 def test():
-    # 從POST請求中獲取資料
-    body = request.get_data(as_text=True)
-    # 處理資料並返回響應
-    parsed_data = urllib.parse.parse_qs(body)
-    from_value = parsed_data['from'][0]
-    to_value = parsed_data['to'][0]
-    # from_value = '金豐機器工業股份有限公司'
-    # to_value = '基隆內港'
-    result_text = Carbon.calc_distance(from_value, to_value)
+    origin_input = '金豐機器工業股份有限公司'
+    destination_input = '基隆內港'
+    result_text = Carbon.calc_distance(origin_input,destination_input)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
@@ -55,6 +49,13 @@ def process_data():
     return data
     # return parsed_data
 
+
+    # 處理資料並返回響應
+    # parsed_data = urllib.parse.parse_qs(body)
+    # from_value = parsed_data['from'][0]
+    # to_value = parsed_data['to'][0]
+    # data = {'from': from_value, 'to': to_value}
+    # return data
 
 @app.route("/webhook", methods=['POST'])
 def callback():
