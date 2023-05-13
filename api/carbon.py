@@ -7,14 +7,14 @@ import json
 gmaps = googlemaps.Client(key = os.getenv("GMAPS_API_KEY"))
 
 class Carbon:
-    @classmethod
-    def __init__(self):
-        pass
+    # @classmethod
+    # def __init__(self):
+    #     pass
 
-    def calc_distance():
+    def calc_distance(origin_text, destination_text):
         # 輸入起點和終點的地址或座標
-        origin = '彰化市彰水路186號'
-        destination = '基隆內港'
+        origin = origin_text
+        destination = destination_text
 
         # 設置查詢參數，例如交通方式、出發時間等等
         mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
