@@ -26,14 +26,17 @@ class Carbon:
                                              departure_time=departure_time)
 
         distance = directions_result[0]['legs'][0]['distance']['value']
-        distance = distance / 1000  # km
+        distance_km =  distance / 1000   # km
+        distance_mi = km_to_mi(distance) # 英哩
+        distance_nm = km_to_nm(distance) # 海哩
         duration = directions_result[0]['legs'][0]['duration']['value']
 
         data = {
             'from': origin,
             'to': destination,
-            'distance': distance,
-            'distance_unit': 'km',
+            'distance_km': distance_km,
+            'distance_mi': distance_mi,
+            'distance_nm': distance_nm,
             'duration': duration,
             'duration_unit': 'second',
             'status': 'OK'
@@ -91,12 +94,12 @@ class Carbon:
     #     # 在地球半徑上縮放弧長，得到距離
     #     return arc * 6371  #
     #
-    # def km_to_mi(km):
-    #     return km / 1.609344
-    #
-    # def km_to_nm(km):
-    #     return km / 1.852
-    #
+    def km_to_mi(km):
+        return km / 1.609344
+
+    def km_to_nm(km):
+        return km / 1.852
+
     # def distance_to_carbon_emissions(distance_km, transportation):
     #     if transportation == 'airplane':
     #         return distance_km * 0.285  # 歐盟環境署（EEA）的估算
