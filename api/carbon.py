@@ -17,8 +17,8 @@ class Carbon:
         # 輸入起點和終點的地址或座標
         origin = origin_text
         destination = destination_text
-        mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
-        # mode = mode if mode else 'driving'
+        # mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
+        mode = mode if mode else 'driving'
         # 設置查詢參數，例如交通方式、出發時間等等
         departure_time = datetime.now()
 

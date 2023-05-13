@@ -45,7 +45,8 @@ def carbon():
     parsed_data = urllib.parse.parse_qs(body)
     from_value = parsed_data['from'][0]
     to_value = parsed_data['to'][0]
-    result_text = Carbon.calc_distance(from_value,to_value)
+    mode_value = parsed_data['mode'][0]
+    result_text = Carbon.calc_distance(from_value, to_value, mode_value)
     json_data = json.loads(result_text)
 
     if json_data['status'] == 'OK':
