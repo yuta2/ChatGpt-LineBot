@@ -13,12 +13,12 @@ class Carbon:
     #     pass
 
     # 透過google maps獲取距離
-    def calc_distance(origin_text, destination_text, mode_text):
+    def calc_distance(origin_text, destination_text, mode):
         # 輸入起點和終點的地址或座標
         origin = origin_text
         destination = destination_text
         # mode = 'driving'  # 可選值：'driving'、'walking'、'bicycling'、'transit'
-        mode = mode_text if mode_textmode_text else "driving"
+        mode = mode if mode else "driving"
         # 設置查詢參數，例如交通方式、出發時間等等
         departure_time = datetime.now()
 
