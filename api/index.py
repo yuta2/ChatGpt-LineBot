@@ -23,8 +23,8 @@ def home():
 
 @app.route('/test')
 def test():
-    origin_input = '金豐機器工業股份有限公司'
-    destination_input = '基隆內港'
+    origin_input = '台中港'
+    destination_input = '高雄港'
 
     result_text = Carbon.calc_distance(origin_input,destination_input)
     json_data = json.loads(result_text)

@@ -28,6 +28,8 @@ class Carbon:
         duration = directions_result[0]['legs'][0]['duration']['value']
 
         data = {
+            'from': origin,
+            'to': destination,
             'distance': distance,
             'distance_unit': 'meter',
             'duration': duration,
