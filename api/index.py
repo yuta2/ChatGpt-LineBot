@@ -40,11 +40,11 @@ def test():
 @app.route('/process_data', methods=['POST'])
 def process_data():
     # 從POST請求中獲取資料
-    # body = request.get_data(as_text=True)
-    # data = request.get_json()
-    from_value = request.form['from']
-    to_value = request.form['to']
-    data = {'from': from_value, 'to': to_value}
+    body = request.get_data(as_text=True)
+    data = request.get_json()
+    # from_value = request.form['from']
+    # to_value = request.form['to']
+    # data = {'from': from_value, 'to': to_value}
     return jsonify(data)
 
     # 處理資料並返回響應
