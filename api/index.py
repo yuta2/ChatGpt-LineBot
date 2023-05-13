@@ -40,7 +40,8 @@ def test():
 @app.route('/process_data', methods=['POST'])
 def process_data():
     # 從POST請求中獲取資料
-    data = request.get_data(as_text=True)
+    data = request.get_data()
+    # data = request.get_data(as_text=True)
     # data = request.get_json()
     # from_value = request.form['from']
     # to_value = request.form['to']
