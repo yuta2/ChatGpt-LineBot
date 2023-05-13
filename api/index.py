@@ -22,6 +22,7 @@ def home():
 @app.route('/carbon')
 def test():
     Carbon.calc_distance()
+    return
 
 @app.route("/webhook", methods=['POST'])
 def callback():
