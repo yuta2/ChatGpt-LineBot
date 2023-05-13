@@ -34,7 +34,14 @@ class Carbon:
         # 獲取地址的經緯度
         from_location = get_geocode_location(origin)
         to_location = get_geocode_location(destination)
-
+        # 判斷是否獲取成功
+        if from_location is None:
+            print("獲取第一個地址經緯度失敗")
+            return
+        if to_location is None:
+            print("獲取第二個地址經緯度失敗")
+            return
+        distance_sphere_km = distance_on_unit_sphere(from_location[0], from_location[1], to_location[0], to_location[1])
 
         data = {
             'from': origin,
