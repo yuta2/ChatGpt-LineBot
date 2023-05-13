@@ -9,7 +9,7 @@ class Carbon:
     def __init__(self):
         pass
 
-    def calc_distance(self):
+    def calc_distance():
         # 輸入起點和終點的地址或座標
         origin = '彰化市彰水路186號'
         destination = '基隆內港'
@@ -27,5 +27,8 @@ class Carbon:
         distance = directions_result[0]['legs'][0]['distance']['value']
         duration = directions_result[0]['legs'][0]['duration']['value']
 
-        print(f"距離：{distance} 公尺")
-        print(f"時間：{duration} 秒")
+        data = {
+            'distance': distance,
+            'duration': duration
+        }
+        return jsonify(data)

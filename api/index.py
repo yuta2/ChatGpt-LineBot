@@ -1,4 +1,4 @@
-from flask import Flask, request, abort
+from flask import Flask, request, abort, jsonify
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -21,8 +21,7 @@ def home():
 
 @app.route('/carbon')
 def test():
-    Carbon.calc_distance()
-    return
+    return Carbon.calc_distance()
 
 @app.route("/webhook", methods=['POST'])
 def callback():
