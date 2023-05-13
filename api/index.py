@@ -41,7 +41,8 @@ def test():
 def process_data():
     # 從POST請求中獲取資料
     body = request.get_data(as_text=True)
-    return body
+    parsed_data = urllib.parse.parse_qs(body)
+    return parsed_data
 
 
     # 處理資料並返回響應
